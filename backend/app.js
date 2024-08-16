@@ -5,8 +5,13 @@ const db = require("./config/mongoose-connection")
 const bookRouter = require("./routes/bookRouter")
 const cors = require("cors")
 
-app.use(cors())  // for cross-origin resource sharing (CORS)
-
+app.use(cors(
+    {
+        origin: ["http://BookStore-App-1whq.vercel.app"],
+        credentials: true,
+        methods:["POST", "GET", "DELETE","PUT"]
+    }
+))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))  // for parsing application/x-www-form-urlencoded
 
